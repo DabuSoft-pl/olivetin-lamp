@@ -1,0 +1,50 @@
+# The parts of OliveTin's config.yaml that Lamp uses. Tested with OliveTin 3000.21.
+
+# Serve Lamp instead of the built-in UI (copy src/ here).
+webUIDir: /etc/OliveTin/lamp
+
+actions:
+  - id: update                 # stable ids: lamp.json and history refer to them
+    title: Update packages
+    icon: '<iconify-icon icon="mdi:update"></iconify-icon>'   # mdi:* names map to Lamp's icons
+    shell: ansible-playbook update.yml --limit {{ limit }}
+    arguments:
+      - name: limit
+        title: Machine
+        choices:
+          - { value: all, title: All machines }
+          - { value: nas, title: nas }
+      # A *named* confirmation argument: OliveTin rejects the run without it, and Lamp turns it
+      # into "hold to run". (An unnamed one is only a checkbox in the default UI.)
+      - name: confirm
+        title: I understand
+        type: confirmation
+
+  # Optional: the action behind "Refresh status" on the Status screen.
+  - id: status
+    title: Refresh status
+    shell: /usr/local/bin/write-machines-yaml
+    execOnStartup: true
+    execOnCron: ["*/30 * * * *"]
+
+# Optional: the entity for the Status screen (see machines.yaml).
+entities:
+  - file: /var/lib/olivetin/machines.yaml
+    name: machine
+
+# Lamp groups actions by the dashboard fieldsets they sit in.
+dashboards:
+  - title: Homelab
+    contents:
+      - title: Everyday
+        type: fieldset
+        contents:
+          - title: Update packages
+          - title: Refresh status
+
+# Scheduled and startup runs execute as the "system" user group; give it exec rights or they are blocked.
+accessControlLists:
+  - name: system
+    matchUsergroups: [system]
+    addToEveryAction: true
+    permissions: { view: false, exec: true, logs: true }

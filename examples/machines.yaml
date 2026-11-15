@@ -1,0 +1,32 @@
+# Entity file for the Status screen. Write it from any script or cron job; OliveTin reloads it
+# when the file is written in place (a rename-based copy is not noticed until OliveTin restarts).
+#
+# Fields Lamp reads (all strings):
+#   name      shown on the card (falls back to the entity title)
+#   state     ok | warn | bad | offline
+#   label     short state text, e.g. "OK", "reboot", "2 problems"
+#   summary   problems, one per line (or separated with <br>)
+#   meta      small text on the card, e.g. "3 updates"
+#   checked   when it was checked, e.g. "08:30"
+#   subtitle  shown under the name in the machine sheet
+# Any other field can be shown with status.details or used in status.machineActions ("only", "{field}").
+- name: nas
+  state: warn
+  label: reboot
+  summary: kernel 6.12.9 waiting for a reboot
+  meta: 3 updates
+  checked: "08:30"
+  subtitle: Virtual machine
+  kind: vm
+  updates: "3"
+  uptime: "41.2"
+- name: router
+  state: ok
+  label: OK
+  summary: ""
+  meta: ""
+  checked: "08:30"
+  subtitle: Physical host
+  kind: host
+  updates: "0"
+  uptime: "120.4"

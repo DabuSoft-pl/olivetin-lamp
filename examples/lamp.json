@@ -1,0 +1,28 @@
+{
+  "title": "Homelab",
+  "lang": "auto",
+  "groups": ["Everyday", "Backup", "Setup"],
+  "actions": {
+    "check":        { "description": "Read-only: updates, disks, backups", "icon": "clipboard" },
+    "update":       { "description": "Package upgrades, no reboot" },
+    "reboot":       { "description": "Clean reboot from inside the system, or a hard reset" },
+    "prune":        { "description": "Removes stopped containers and unused images" },
+    "restore-test": { "description": "Restores the latest backup into a scratch machine and checks it boots" },
+    "offsite":      { "description": "Copies backups to object storage" },
+    "notify":       { "description": "Sends a test alert to your phone" },
+    "certs":        { "description": "Renews TLS certificates and reloads the proxy" }
+  },
+  "status": {
+    "entity": "machine",
+    "refreshAction": "status",
+    "details": [
+      { "field": "updates", "label": { "en": "Updates", "pl": "Aktualizacje" } },
+      { "field": "uptime", "label": { "en": "Uptime", "pl": "Czas działania" }, "format": "days" }
+    ],
+    "machineActions": [
+      { "action": "check",  "args": { "limit": "{name}" }, "title": { "en": "Check", "pl": "Sprawdź" } },
+      { "action": "update", "args": { "limit": "{name}" }, "title": { "en": "Update", "pl": "Zaktualizuj" } },
+      { "action": "reboot", "args": { "host": "{name}" },  "title": { "en": "Reboot", "pl": "Restartuj" }, "only": { "field": "kind", "in": ["vm"] } }
+    ]
+  }
+}
