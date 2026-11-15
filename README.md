@@ -33,6 +33,8 @@ webUIDir: /etc/OliveTin/lamp
 
 Restart OliveTin. To go back, remove `webUIDir`.
 
+OliveTin serves static files with `Last-Modified` but no `Cache-Control`, so a browser may keep the previous version for a while after an upgrade. File URLs carry the version (`app.js?v=1.0.0`) to limit that; if a phone still shows the old UI, reload it once.
+
 Tested with OliveTin **3000.21**. Lamp uses OliveTin's API (`Init`, `WhoAmI`, `GetDashboard`, `GetLogs`, `StartAction`, `ExecutionStatus`, `KillAction`, `GetEntities`, `GetEntity`), which can change between OliveTin releases.
 
 ## Configure (optional): `lamp.json`
@@ -104,6 +106,8 @@ OLIVETIN_URL=http://olivetin.lan:1337 node dev/server.mjs  # your OliveTin behin
 ```
 
 The mock implements the API calls Lamp makes, with runs that stream output and enforce named confirmations. The demo config is [`dev/demo-lamp.json`](dev/demo-lamp.json); set `LAMP_CONFIG=` to try Lamp without one.
+
+Releasing: bump the `?v=` version in `src/index.html` (twice) and in the `i18n.js` import in `src/app.js`, then tag `vX.Y.Z`.
 
 Translations live in [`src/i18n.js`](src/i18n.js); copy the `en` block to add a language.
 

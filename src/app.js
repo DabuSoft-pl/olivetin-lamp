@@ -3,7 +3,7 @@
 // authentication and access control lists apply unchanged: this file can't do anything the user can't.
 // Everything works without lamp.json; the file only adds groups, descriptions, icons and the Status screen.
 
-import { STRINGS, pickLang } from "./i18n.js";
+import { STRINGS, pickLang } from "./i18n.js?v=1.0.0";
 
 const API = "/api/olivetin.api.v1.OliveTinApiService/";
 const POLL_MS = 20000;
