@@ -35,7 +35,7 @@ Restart OliveTin. To go back, remove `webUIDir`.
 
 OliveTin serves static files with `Last-Modified` but no `Cache-Control`, so a browser may keep the previous version for a while after an upgrade. File URLs carry the version (`app.js?v=1.0.0`) to limit that; if a phone still shows the old UI, reload it once.
 
-Tested with OliveTin **3000.21**. Lamp uses OliveTin's API (`Init`, `WhoAmI`, `GetDashboard`, `GetLogs`, `StartAction`, `ExecutionStatus`, `KillAction`, `GetEntities`, `GetEntity`), which can change between OliveTin releases.
+Tested with OliveTin **3000.21**. Lamp uses OliveTin's API (`Init`, `WhoAmI`, `GetDashboard`, `GetLogs`, `StartAction`, `ExecutionStatus`, `KillAction`, `GetEntities`, `GetEntity`); OliveTin's maintainer considers these stable ([discussion #1163](https://github.com/OliveTin/OliveTin/discussions/1163)).
 
 ## Configure (optional): `lamp.json`
 
