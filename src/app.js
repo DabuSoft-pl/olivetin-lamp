@@ -427,7 +427,7 @@ function openAction(id, preset = {}) {
   }
   const start = async () => {
     const args = Object.entries(values).map(([name, value]) => ({ name, value }));
-    // OliveTin enforces a named confirmation argument server-side; the long press is what the user agreed to
+    // OliveTin requires a named confirmation to be sent (0 or 1, so it guards against accidents, not access); the long press is the user's yes
     if (confirm?.name) args.push({ name: confirm.name, value: "1" });
     try {
       const r = await api("StartAction", { bindingId: id, arguments: args });
