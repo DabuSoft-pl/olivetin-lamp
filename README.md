@@ -107,7 +107,7 @@ OLIVETIN_URL=http://olivetin.lan:1337 node dev/server.mjs  # your OliveTin behin
 
 The mock implements the API calls Lamp makes, with runs that stream output and enforce named confirmations. The demo config is [`dev/demo-lamp.json`](dev/demo-lamp.json); set `LAMP_CONFIG=` to try Lamp without one.
 
-Releasing: bump the `?v=` version in `src/index.html` (twice) and in the `i18n.js` import in `src/app.js`, then tag `vX.Y.Z`.
+Releasing: `dev/release.sh X.Y.Z ["notes"]` bumps the `?v=` versions in `src/`, tags, pushes and publishes `lamp-X.Y.Z.tar.gz` on GitHub; with `homelab-ansible` checked out next to this repo it also updates the version and sha256 there.
 
 Translations live in [`src/i18n.js`](src/i18n.js); copy the `en` block to add a language.
 
