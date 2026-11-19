@@ -175,6 +175,7 @@ main { min-width: 0; padding: 48px clamp(24px, 5vw, 64px) 96px; max-width: 1080p
 .machine .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .machine .name { font-size: 17px; font-weight: 500; letter-spacing: -0.01em; }
 .machine .tag { display: inline-flex; align-items: center; gap: 8px; font: 12px/16px var(--mono); color: var(--c); }
+.machine .kind { margin-top: -6px; color: var(--text-2); font-size: 13px; line-height: 16px; }
 .machine .note { color: var(--text); font-size: 14px; line-height: 20px; }
 .machine .meta { margin-top: auto; font: 12px/16px var(--mono); color: var(--text-3); }
 .machine.warn, .machine.bad, .machine.offline { grid-column: span 2; border-color: color-mix(in srgb, var(--c) 40%, transparent); background: color-mix(in srgb, var(--c) 6%, var(--surface)); }

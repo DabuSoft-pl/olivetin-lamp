@@ -3,7 +3,7 @@
 // authentication and access control lists apply unchanged: this file can't do anything the user can't.
 // Everything works without lamp.json; the file only adds groups, descriptions, icons and the Status screen.
 
-import { STRINGS, pickLang } from "./i18n.js?v=1.0.0";
+import { STRINGS, pickLang } from "./i18n.js?v=1.0.1";
 
 const API = "/api/olivetin.api.v1.OliveTinApiService/";
 const POLL_MS = 20000;
@@ -315,6 +315,7 @@ function machineCard(m) {
   const probs = lines(m.summary);
   return h("button", { class: `machine ${m.state}`, onclick: () => openMachine(m) },
     h("span", { class: "row" }, h("span", { class: "name" }, m.name), h("span", { class: "tag" }, h("i", { class: "lamp" }), m.label || m.state)),
+    m.subtitle || m.kind ? h("span", { class: "kind" }, m.subtitle || m.kind) : null,
     m.state !== "ok" && probs.length ? h("span", { class: "note" }, probs.join(" · ")) : null,
     h("span", { class: "meta" }, m.meta || (m.state === "ok" ? T.noChange : "")));
 }

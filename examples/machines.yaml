@@ -8,7 +8,7 @@
 #   summary   problems, one per line (or separated with <br>)
 #   meta      small text on the card, e.g. "3 updates"
 #   checked   when it was checked, e.g. "08:30"
-#   subtitle  shown under the name in the machine sheet
+#   subtitle  shown under the name on the card and in the machine sheet (falls back to kind on the card)
 # Any other field can be shown with status.details or used in status.machineActions ("only", "{field}").
 - name: nas
   state: warn
